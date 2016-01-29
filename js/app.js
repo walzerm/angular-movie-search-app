@@ -9,8 +9,11 @@ app.config(function($routeProvider, $locationProvider){
       $locationProvider.html5Mode(true);
 });
 
-app.controller("searchController", function($scope){
+app.controller("searchController", function($scope, $http){
   $scope.message = "It worked bitches";
+  $http.get('http://www.omdbapi.com/?s=lord').then(function(data) {
+      $scope.titles = data.data.Search;
+  })
 });
 
 app.controller('testController', function($scope) {

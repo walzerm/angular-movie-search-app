@@ -1,1 +1,8 @@
 <p>{{message}}</p>
+
+<div class="panel panel-default" ng-repeat="title in titles track by $index">
+    <div class="panel-body">
+            {{ title.Title }} - {{ title.Year}}
+    </div>
+</div>
+<!-- {{ zenData }} -->

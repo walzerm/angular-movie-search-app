@@ -1,0 +1,11 @@
+.panel {
+    width: 45%;
+    float: left;
+    height: 75px;
+    margin: 10px;
+}
+
+.panel:hover {
+    border-width: 2px;
+    border-color: #7F7F7F;
+}
