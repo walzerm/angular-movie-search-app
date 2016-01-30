@@ -9,3 +9,14 @@
     border-width: 2px;
     border-color: #7F7F7F;
 }
+
+.poster {
+    height: 300px;
+}
+
+.movieInfo {
+    float: left;
+}
+.jumbotron {
+    font-size: small;
+}

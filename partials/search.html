@@ -2,7 +2,6 @@
 
 <div class="panel panel-default" ng-repeat="title in titles track by $index">
     <div class="panel-body">
-            {{ title.Title }} - {{ title.Year}}
+            <a href="/movie/{{ title.imdbID }}">{{ title.Title }} - {{ title.Year}}</a>
     </div>
 </div>
-<!-- {{ zenData }} -->

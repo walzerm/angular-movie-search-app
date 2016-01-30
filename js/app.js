@@ -1,21 +1,43 @@
 var app = angular.module('myApp',['ngRoute']);
 
+var results;
+
 app.config(function($routeProvider, $locationProvider){
     $routeProvider
-      .when('/', {
-        templateUrl: 'partials/search.html',
-        controller: 'searchController'
-      })
-      $locationProvider.html5Mode(true);
+        .when('/results', {
+            templateUrl: 'partials/search.html',
+            controller: 'searchController'
+        }).when('/movie/:id', {
+            templateUrl: 'partials/movie.html',
+            controller: 'movieController'
+        }).otherwise({
+            redirectTo: '/'
+        });
+        $locationProvider.html5Mode(true);
 });
 
 app.controller("searchController", function($scope, $http){
   $scope.message = "It worked bitches";
-  $http.get('http://www.omdbapi.com/?s=lord').then(function(data) {
-      $scope.titles = data.data.Search;
-  })
+  $scope.titles = results;
 });
 
-app.controller('testController', function($scope) {
-    $scope.test = "This is a super test";
+app.controller('movieController', function($scope, $http, $routeParams) {
+    $http.get('http://www.omdbapi.com/?i=' +  $routeParams.id + '&plot=short&r=json').then(function(data) {
+        $scope.movieData = data.data;
+        console.log($scope.movieData);
+    })
+})
+
+app.controller('mainController', function($scope, $http, $location) {
+    $scope.searchOMDB = function(search) {
+        results = null;
+        $http.get('http://www.omdbapi.com/?s=' + search.title).then(function(data) {
+            results = data.data.Search;
+            // console.log(results);
+            // $window.location.href = '/#/results';
+            console.log('here');
+            $location.url('/results');
+
+        })
+    }
 })
