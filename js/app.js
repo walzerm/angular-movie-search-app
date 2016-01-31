@@ -17,7 +17,6 @@ app.config(function($routeProvider, $locationProvider){
 });
 
 app.controller("searchController", function($scope, $http){
-  $scope.message = "It worked bitches";
   $scope.titles = results;
 });
 
@@ -30,15 +29,11 @@ app.controller('movieController', function($scope, $http, $routeParams) {
 
 app.controller('mainController', function($scope, $http, $location, $route) {
     $scope.searchOMDB = function(search) {
-        $route.reload();
         results = null;
         $http.get('http://www.omdbapi.com/?s=' + search.title).then(function(data) {
             results = data.data.Search;
-            // console.log(results);
-            // $window.location.href = '/#/results';
-            console.log('here');
+            $route.reload();
             $location.url('/results');
-            // $window.location.href = '/results';
 
         })
     }
