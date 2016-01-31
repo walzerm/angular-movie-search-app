@@ -1,10 +1,9 @@
-<p>
-    I work too bitches
-</p>
 
-<div class="jumbotron">
+
+<div class="panel panel-default">
+    <div class="panel-body">
         <h4>{{ movieData.Title }}</h4>
-        <div class="container-fluid">
+        <div class="container-fluid text-left">
             <div class="col-md-4">
                 <img class="poster" src="{{ movieData.Poster }}" alt="{{ movieData.Title }}" />
             </div>
@@ -16,6 +15,31 @@
                 <p>
                     {{ movieData.Awards }}
                 </p>
+                <div>
+                    <p><strong>Director</strong></p>
+                    <p>{{ movieData.Director }}</p>
+                </div>
+                <div>
+                    <p><strong>Writer</strong></p>
+                    <p>{{ movieData.Writer }}</p>
+                </div>
+                <div>
+                    <p><strong>Genre</strong></p>
+                    <p>{{ movieData.Genre }}</p>
+                </div>
+                <div>
+                    <p><strong>Language</strong></p>
+                    <p>{{ movieData.Language }}</p>
+                </div>
+                <div>
+                    <p><strong>Released</strong></p>
+                    <p>{{ movieData.Released }}</p>
+                </div>
+                <div>
+                    <p><strong>Runtime</strong></p>
+                    <p>{{ movieData.Runtime }}</p>
+                </div>
             </div>
+        </div>
     </div>
 </div>

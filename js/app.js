@@ -28,8 +28,9 @@ app.controller('movieController', function($scope, $http, $routeParams) {
     })
 })
 
-app.controller('mainController', function($scope, $http, $location) {
+app.controller('mainController', function($scope, $http, $location, $route) {
     $scope.searchOMDB = function(search) {
+        $route.reload();
         results = null;
         $http.get('http://www.omdbapi.com/?s=' + search.title).then(function(data) {
             results = data.data.Search;
@@ -37,6 +38,7 @@ app.controller('mainController', function($scope, $http, $location) {
             // $window.location.href = '/#/results';
             console.log('here');
             $location.url('/results');
+            // $window.location.href = '/results';
 
         })
     }
